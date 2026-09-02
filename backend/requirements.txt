@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
+xgboost
+redis
+celery
+pydantic
+scikit-learn
+pandas
+numpy
+python-dotenv
+lightgbm
+python-jose[cryptography]
+passlib[bcrypt]
+python-multipart
+slowapi
