@@ -1,0 +1,23 @@
+{
+  "global": {
+    "residual_q90": 8.628352589841507,
+    "n_calibration": 545,
+    "actual_coverage": 0.9045871559633027
+  },
+  "Orthopedics": {
+    "residual_q90": 7.2848601142999705,
+    "n_calibration": 139
+  },
+  "General Physician": {
+    "residual_q90": 2.710740248251841,
+    "n_calibration": 145
+  },
+  "Pediatrics": {
+    "residual_q90": 6.72320493331863,
+    "n_calibration": 139
+  },
+  "Cardiology": {
+    "residual_q90": 14.506405064552478,
+    "n_calibration": 122
+  }
+}

@@ -1,0 +1,261 @@
+{
+  "passed": 51,
+  "total": 51,
+  "results": [
+    {
+      "name": "Login redirects to /patient",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Dashboard: Welcome Back",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Dashboard: Sidebar visible (Records link)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Dashboard: Sidebar visible (Medications link)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Dashboard: Sidebar visible (Messages link)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Dashboard: Sidebar visible (Billing link)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Dashboard: Sidebar visible (Reviews link)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Dashboard: Bell badge rendered",
+      "pass": true,
+      "detail": "badge elements=1"
+    },
+    {
+      "name": "Dashboard: No runtime errors",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Records: Diagnosis text visible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Records: Department rendered",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Records: Doctor notes visible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Records: No runtime errors",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Records: Lab results expand shows test names",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Medications: Amlodipine card visible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Medications: Atorvastatin card visible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Medications: Dosage shown",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Medications: Frequency shown",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Medications: Refill button present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Medications: No runtime errors",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Medications: Refill request updates status",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Messages: New Message button",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Messages: Thread list visible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Messages: Chat bubble text",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Messages: Reply box visible",
+      "pass": true,
+      "detail": "textareas=1"
+    },
+    {
+      "name": "Messages: No runtime errors",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Messages: Reply sent appears in chat",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Billing: Total Outstanding card",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Billing: Total Paid card",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Billing: Invoice table rows",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Billing: Insurance column",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Billing: No runtime errors",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Billing: Pay Now updates status",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Reviews: Pending or submitted section visible",
+      "pass": true,
+      "detail": "pending=true submitted=true"
+    },
+    {
+      "name": "Reviews: Star ratings visible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Reviews: No runtime errors",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Reviews: Star selection works",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Notifications: Lab Results Ready card",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Notifications: Appointment Tomorrow card",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Notifications: Unread indicator",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Notifications: Mark all read button",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Notifications: No runtime errors",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Notifications: Mark all read removes badge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Triage: Returns urgency field",
+      "pass": true,
+      "detail": "urgency=medium"
+    },
+    {
+      "name": "Triage: Returns recommended_dept",
+      "pass": true,
+      "detail": "dept=Orthopedics"
+    },
+    {
+      "name": "Triage: Returns go_to_er flag",
+      "pass": true,
+      "detail": "go_to_er=false"
+    },
+    {
+      "name": "Triage: Orthopedics for joint pain",
+      "pass": true,
+      "detail": "got=Orthopedics"
+    },
+    {
+      "name": "Waitlist: POST /waitlist succeeds",
+      "pass": true,
+      "detail": "status=200 msg={\"msg\":\"Added to waitlist\",\"waitlist_id\":\"379c3121-b17a-40c3"
+    },
+    {
+      "name": "Waitlist: GET /waitlist/my returns entries",
+      "pass": true,
+      "detail": "count=1"
+    },
+    {
+      "name": "Anomaly: Returns results array",
+      "pass": true,
+      "detail": "got={\"anomalies_checked\":0,\"results\":[]}"
+    },
+    {
+      "name": "Anomaly: anomalies_checked field present",
+      "pass": true,
+      "detail": "checked=0"
+    }
+  ]
+}
