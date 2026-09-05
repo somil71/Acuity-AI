@@ -185,27 +185,27 @@ export default function PatientLayout({ children }: { children: React.ReactNode 
           </div>
         </header>
 
-        <main className="flex-1 p-4 md:p-8 pb-24 md:pb-8">{children}</main>
-      </div>
+        {/* Mobile Top Tab Bar (Moved up) */}
+        <nav className="md:hidden sticky top-16 z-30 bg-white border-b border-slate-200 flex items-stretch overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] shadow-sm">
+          {NAV_LINKS.map(({ href, label, icon: Icon }) => {
+            const isActive = pathname === href;
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={`flex-1 min-w-[72px] flex flex-col items-center justify-center py-2.5 gap-1 text-[10px] font-medium transition-colors ${
+                  isActive ? 'text-blue-600 border-b-2 border-blue-600 bg-blue-50/50' : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50 border-b-2 border-transparent'
+                }`}
+              >
+                <Icon size={18} strokeWidth={isActive ? 2.5 : 2} />
+                <span>{label}</span>
+              </Link>
+            );
+          })}
+        </nav>
 
-      {/* Mobile Bottom Tab Bar */}
-      <nav className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-slate-200 flex items-stretch">
-        {NAV_LINKS.map(({ href, label, icon: Icon }) => {
-          const isActive = pathname === href;
-          return (
-            <Link
-              key={href}
-              href={href}
-              className={`flex-1 flex flex-col items-center justify-center py-2 gap-0.5 text-[10px] font-medium transition-colors ${
-                isActive ? 'text-blue-600' : 'text-slate-400 hover:text-slate-600'
-              }`}
-            >
-              <Icon size={20} strokeWidth={isActive ? 2.5 : 1.8} />
-              <span>{label}</span>
-            </Link>
-          );
-        })}
-      </nav>
+        <main className="flex-1 p-4 md:p-8 pb-8">{children}</main>
+      </div>
     </div>
   );
 }

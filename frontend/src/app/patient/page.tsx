@@ -41,6 +41,11 @@ export default function PatientDashboard() {
     { refreshInterval: 5000 }
   );
 
+  const { data: congestion } = useSWR(
+    bookDept ? `/congestion/live/${bookDept}` : null,
+    fetcher, { refreshInterval: 30000 }
+  );
+
   const handleLogout = () => {
     localStorage.clear();
     router.push('/');
@@ -85,29 +90,7 @@ export default function PatientDashboard() {
   );
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans pb-20">
-      
-      {/* Top Navbar */}
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-          <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-              <div className="flex items-center gap-2 text-blue-700">
-                  <div className="bg-blue-600 p-1.5 rounded-lg text-white">
-                      <HeartPulse size={20} strokeWidth={2.5} />
-                  </div>
-                  <span className="font-bold text-lg tracking-tight">PulsePredict</span>
-              </div>
-              <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-2 text-sm font-medium text-slate-600 bg-slate-100 px-3 py-1.5 rounded-full border border-slate-200">
-                      <UserCircle size={18} className="text-slate-400" /> {userId}
-                  </div>
-                  <button onClick={handleLogout} className="text-slate-400 hover:text-red-500 transition-colors p-2 rounded-full hover:bg-red-50">
-                      <LogOut size={20} />
-                  </button>
-              </div>
-          </div>
-      </header>
-
-      <main className="p-6 max-w-5xl mx-auto py-10 space-y-8">
+    <div className="space-y-8 max-w-5xl mx-auto">
           <div>
               <h1 className="text-3xl font-extrabold tracking-tight text-slate-900">Welcome Back</h1>
               <p className="text-slate-500 mt-1">Manage your health and track live wait times.</p>
@@ -196,15 +179,7 @@ export default function PatientDashboard() {
                     <h2 className="text-xl font-bold tracking-tight text-slate-800 mb-2">Book an Appointment</h2>
                     <p className="text-sm text-slate-500 mb-4">Need to see a doctor? Schedule a walk-in immediately and get a live wait-time estimate instantly.</p>
                     
-                    {(() => {
-                      const { data: congestion } = useSWR(
-                        bookDept ? `/congestion/live/${bookDept}` : null,
-                        fetcher, { refreshInterval: 30000 }
-                      );
-                      
-                      if (!congestion) return null;
-                      
-                      return (
+                    {congestion && (
                         <div className={`mb-6 flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium border ${
                           congestion.current_state === 'HEALTHY' ? 'bg-green-50 border-green-200 text-green-700' :
                           congestion.current_state === 'MODERATE' ? 'bg-yellow-50 border-yellow-200 text-yellow-700' :
@@ -217,8 +192,7 @@ export default function PatientDashboard() {
                             <span className="text-xs opacity-75 ml-1">- longer waits possible</span>
                           )}
                         </div>
-                      );
-                    })()}
+                    )}
                     
                     <form onSubmit={handleBook} className="space-y-4">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -319,7 +293,6 @@ export default function PatientDashboard() {
                 </table>
               </div>
           </div>
-      </main>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-﻿from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.db import get_db
 from app.models import schema
@@ -50,9 +50,12 @@ def get_appointment_status(appointment_id: str, db: Session = Depends(get_db), c
     doctor_id = appt.doctor_id
     department = appt.department
     
+    today_start = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
     ahead = db.query(schema.Appointment).filter(
         schema.Appointment.doctor_id == doctor_id,
-        schema.Appointment.scheduled_time < appt.scheduled_time
+        schema.Appointment.scheduled_time < appt.scheduled_time,
+        schema.Appointment.scheduled_time >= today_start,
+        schema.Appointment.status.notin_(["completed", "cancelled"])
     ).all()
     
     patients_ahead = []

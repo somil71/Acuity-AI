@@ -1,5 +1,5 @@
 {
-  "passed": 51,
+  "passed": 40,
   "total": 51,
   "results": [
     {
@@ -9,38 +9,38 @@
     },
     {
       "name": "Dashboard: Welcome Back",
-      "pass": true,
+      "pass": false,
       "detail": ""
     },
     {
       "name": "Dashboard: Sidebar visible (Records link)",
-      "pass": true,
+      "pass": false,
       "detail": ""
     },
     {
       "name": "Dashboard: Sidebar visible (Medications link)",
-      "pass": true,
+      "pass": false,
       "detail": ""
     },
     {
       "name": "Dashboard: Sidebar visible (Messages link)",
-      "pass": true,
+      "pass": false,
       "detail": ""
     },
     {
       "name": "Dashboard: Sidebar visible (Billing link)",
-      "pass": true,
+      "pass": false,
       "detail": ""
     },
     {
       "name": "Dashboard: Sidebar visible (Reviews link)",
-      "pass": true,
+      "pass": false,
       "detail": ""
     },
     {
       "name": "Dashboard: Bell badge rendered",
-      "pass": true,
-      "detail": "badge elements=1"
+      "pass": false,
+      "detail": "badge elements=0"
     },
     {
       "name": "Dashboard: No runtime errors",
@@ -103,9 +103,9 @@
       "detail": ""
     },
     {
-      "name": "Medications: Refill request updates status",
-      "pass": true,
-      "detail": ""
+      "name": "Medications: Refill button clickable",
+      "pass": false,
+      "detail": "click failed"
     },
     {
       "name": "Messages: New Message button",
@@ -163,9 +163,9 @@
       "detail": ""
     },
     {
-      "name": "Billing: Pay Now updates status",
+      "name": "Billing: Pay Now button (all already paid)",
       "pass": true,
-      "detail": ""
+      "detail": "no pending invoices"
     },
     {
       "name": "Reviews: Pending or submitted section visible",
@@ -199,12 +199,12 @@
     },
     {
       "name": "Notifications: Unread indicator",
-      "pass": true,
+      "pass": false,
       "detail": ""
     },
     {
       "name": "Notifications: Mark all read button",
-      "pass": true,
+      "pass": false,
       "detail": ""
     },
     {
@@ -213,9 +213,9 @@
       "detail": ""
     },
     {
-      "name": "Notifications: Mark all read removes badge",
-      "pass": true,
-      "detail": ""
+      "name": "Notifications: Mark all read clickable",
+      "pass": false,
+      "detail": "button not found after action"
     },
     {
       "name": "Triage: Returns urgency field",
@@ -240,12 +240,12 @@
     {
       "name": "Waitlist: POST /waitlist succeeds",
       "pass": true,
-      "detail": "status=200 msg={\"msg\":\"Added to waitlist\",\"waitlist_id\":\"379c3121-b17a-40c3"
+      "detail": "status=200 msg={\"msg\":\"Added to waitlist\",\"waitlist_id\":\"963ceb2b-c977-4f9e"
     },
     {
       "name": "Waitlist: GET /waitlist/my returns entries",
       "pass": true,
-      "detail": "count=1"
+      "detail": "count=2"
     },
     {
       "name": "Anomaly: Returns results array",

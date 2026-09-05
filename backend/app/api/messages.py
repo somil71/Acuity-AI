@@ -1,4 +1,4 @@
-﻿from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from pydantic import BaseModel, Field
 from datetime import datetime
@@ -164,5 +164,57 @@ def reply_to_thread(
     db.add(message)
     thread.last_message_at = now
     db.commit()
+
+    # NLP Auto-Responder: Real Machine Learning Intent Classification
+    if current_user.role == "patient":
+        from datetime import timedelta
+        import joblib
+        import os
+        import numpy as np
+        
+        try:
+            # Load the trained scikit-learn NLP pipeline
+            base = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+            model_path = os.path.join(base, 'ml', 'models', 'chat_intent_model.pkl')
+            
+            nlp_model = joblib.load(model_path)
+            
+            # Predict probability of each intent
+            probs = nlp_model.predict_proba([payload.body])[0]
+            best_idx = np.argmax(probs)
+            predicted_intent = nlp_model.classes_[best_idx]
+            confidence = probs[best_idx]
+            
+            # If the model isn't confident, fallback to general
+            if confidence < 0.35:
+                predicted_intent = 'general'
+            
+            responses = {
+                'refill': "I've received your prescription refill request. I will review your file and send the authorization to your pharmacy shortly.",
+                'symptoms': "I'm sorry to hear you're experiencing these symptoms. Please monitor them closely. If they worsen rapidly, please head to the ER or book an urgent walk-in.",
+                'scheduling': "Regarding your schedule: our front desk can help adjust your appointment times. Feel free to use the booking portal on your dashboard as well.",
+                'billing': "For billing and insurance questions, our finance department has been notified and will review your invoice. You can also view your balances in the Billing tab.",
+                'records': "Your recent lab and test results are being processed. Once reviewed, they will appear directly in the Health Records tab of your portal.",
+                'general': "Thank you for reaching out. I have noted this in your file. We can discuss this in more detail at your next visit."
+            }
+            
+            bot_reply = responses.get(predicted_intent, responses['general'])
+            
+        except Exception as e:
+            # Fallback if model fails to load
+            bot_reply = "Thank you for the message. I will review your file shortly."
+
+        auto_msg = Message(
+            message_id=str(uuid.uuid4()),
+            thread_id=thread_id,
+            sender_id=thread.doctor_id,
+            sender_role="staff",
+            body=bot_reply,
+            sent_at=now + timedelta(seconds=2),
+            is_read=False,
+        )
+        db.add(auto_msg)
+        thread.last_message_at = auto_msg.sent_at
+        db.commit()
 
     return {"msg": "Reply sent", "message_id": message.message_id}
