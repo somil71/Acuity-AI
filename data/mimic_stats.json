@@ -1,0 +1,18 @@
+{
+  "total_visits": 112810,
+  "start_date": "2024-01-01",
+  "end_date": "2025-12-31",
+  "dept_distribution": {
+    "General Physician": 28491,
+    "Cardiology": 28287,
+    "Orthopedics": 28037,
+    "Pediatrics": 27995
+  },
+  "disp_distribution": {
+    "DISCHARGED": 73310,
+    "ADMITTED": 31647,
+    "TRANSFERRED": 4517,
+    "LEFT_AMA": 3336
+  },
+  "mean_los_hours": 5.180472202523417
+}

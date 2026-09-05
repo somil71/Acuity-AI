@@ -1,0 +1,18 @@
+{
+  "feature_names": [
+    "department_encoded",
+    "type_encoded",
+    "hour",
+    "day_of_week",
+    "doc_shrunk_avg",
+    "pat_historical_dur"
+  ],
+  "display_mappings": {
+    "department_encoded": "Department",
+    "type_encoded": "Appointment Type",
+    "hour": "Time of Day",
+    "day_of_week": "Day of Week",
+    "doc_shrunk_avg": "Doctor Historical Avg",
+    "pat_historical_dur": "Patient History"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "feature_names": [
+    "current_active_census",
+    "arrivals_15m",
+    "arrivals_30m",
+    "arrivals_60m",
+    "arrivals_120m",
+    "departures_30m",
+    "departures_60m",
+    "net_flow_60m",
+    "high_acuity_ratio",
+    "mean_time_in_system",
+    "hour_of_day",
+    "day_of_week",
+    "month",
+    "arrival_rate_trend"
+  ],
+  "metrics": {
+    "30m": {
+      "accuracy": 0.866552446221207,
+      "f1": 0.8662070936996252
+    },
+    "60m": {
+      "accuracy": 0.8067770797639444,
+      "f1": 0.8068860176921137
+    },
+    "120m": {
+      "accuracy": 0.7300590138968208,
+      "f1": 0.7306396861531377
+    }
+  }
+}
